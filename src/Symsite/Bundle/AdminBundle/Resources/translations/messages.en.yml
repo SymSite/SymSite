@@ -1,0 +1,18 @@
+# Title, Label
+New: New
+Add: Add
+Edit: Edit
+Update: Update
+Delete: Delete
+Menu: Menu
+Blog: Blog
+File: File
+
+# Message
+Are you sure to delete?: Are you sure to delete?
+%entity% does not exist.: %entity% does not exist.
+The %entity% has been saved.: The %entity% has been saved.
+%count% %entity% has been deleted.: %count% %entity% has been deleted.
+The %entity% could not be deleted.: The %entity% could not be deleted.
+
+

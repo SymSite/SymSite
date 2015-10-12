@@ -1,0 +1,33 @@
+{% extends '@SymsiteTheme/layout/4-8.html.twig' %}
+
+{% block title %}Left Sidebar{% endblock %}
+{% block body_id %}left_sidebar{% endblock %}
+
+{% block header %}
+    {% include '@SymsiteTheme/include/_header.html.twig' with {
+        'title': 'Left Sidebar',
+        'lead': 'Sample for left sidebar'
+    } %}
+{% endblock %}
+
+{% block content %}
+    <img class="img-responsive" src="bundles/symsitetheme/img/placeholder/900x300.gif" alt="placeholder">
+
+    <h1>HHeader1</h1>
+    <h2>Header2</h2>
+    <h3>Header3</h3>
+
+    <ul>
+        <li>List1</li>
+        <li>List2</li>
+        <li>List3</li>
+    </ul>
+{% endblock %}
+
+{% block sidebar %}
+    <p><img class="img-responsive" src="bundles/symsitetheme/img/placeholder/300x100.gif" alt="placeholder"></p>
+    <p><img class="img-responsive" src="bundles/symsitetheme/img/placeholder/300x100.gif" alt="placeholder"></p>
+    <p><img class="img-responsive" src="bundles/symsitetheme/img/placeholder/300x100.gif" alt="placeholder"></p>
+    <p><img class="img-responsive" src="bundles/symsitetheme/img/placeholder/300x100.gif" alt="placeholder"></p>
+    <p><img class="img-responsive" src="bundles/symsitetheme/img/placeholder/300x100.gif" alt="placeholder"></p>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "@SymsiteBlog/layout/articles.html.twig" %}
+
+{% block title %}New Article{% endblock %}
+{% block body_id %}article_new{% endblock %}
+
+{% block content %}
+    <h1>{{ 'New Article'|trans  }}</h1>
+    <br/>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <button type="submit"
+                class="btn btn-primary btn-block"
+                data-disable-with="{{ 'Processing...'|trans }}">{{ 'Add'|trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    {% include '@SymsiteAdmin/include/_tinymce.html.twig' with {'message': 'Your article has not been saved yet.'|trans} %}
+    {% include '@SymsiteBlog/include/_select2.html.twig' %}
+{% endblock %}
+

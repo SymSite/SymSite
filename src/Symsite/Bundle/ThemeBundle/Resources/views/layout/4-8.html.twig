@@ -1,0 +1,16 @@
+{% extends '@SymsiteTheme/layout/base.html.twig' %}
+
+{% block grid %}
+<div class="row">
+    <div class="col-sm-4">
+        {% block sidebar %}
+            Display the sidebar here.
+        {% endblock %}
+    </div>
+    <div class="col-sm-8">
+        {% block content %}
+            Display the content here.
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

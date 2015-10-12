@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>
+        {% set title_block = block('title') %}
+        {% if title_block %}
+            {{ title_block|raw }} | {{ site_name|default('SymSite') }}
+        {% else %}
+            {{ site_name|default('SymSite') }}
+        {% endif %}
+    </title>
+
+    {% block meta %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+    {% endblock %}
+
+    {% block css %}
+        {% stylesheets
+          'bundles/symsiteadmin/bower_components/bootstrap/dist/css/bootstrap.min.css'
+          'bundles/symsiteadmin/bower_components/select2/dist/css/select2.min.css'
+          'bundles/symsiteadmin/css/admin.css'
+          filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+
+<body id="{% block body_id %}{% endblock %}">
+{% block navbar %}
+    {% include '@SymsiteAdmin/include/_navbar.html.twig' %}
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+<div class="wrapper">
+    <div class="container">
+        {% include '@SymsiteAdmin/include/_flash.html.twig' %}
+
+        {% block grid %}
+            <div class="row">
+                <div class="col-sm-3">
+                    {% block sidebar %}
+                        {% include '@SymsiteAdmin/include/_main_menu.html.twig' %}
+                    {% endblock %}
+                    {% block sub_menu %}{% endblock %}
+                </div>
+                <div class="col-sm-9">
+                    {% block content %}
+                        Display the content here.
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</div>
+
+{% block bottom %}{% endblock %}
+
+{% block footer %}
+    {% include '@SymsiteAdmin/include/_footer.html.twig' %}
+{% endblock %}
+
+{% block script %}
+    {% javascripts
+      'bundles/symsiteadmin/bower_components/jquery/dist/jquery.min.js'
+      'bundles/symsiteadmin/bower_components/bootstrap/dist/js/bootstrap.min.js'
+      'bundles/symsiteadmin/bower_components/select2/dist/js/select2.min.js'
+      'bundles/symsiteadmin/js/admin.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
+</html>

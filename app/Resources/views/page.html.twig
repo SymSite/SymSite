@@ -1,0 +1,25 @@
+{% extends '@SymsiteTheme/layout/base.html.twig' %}
+
+{% block title %}Page{% endblock %}
+{% block body_id %}page{% endblock %}
+
+{% block header %}
+  {% include '@SymsiteTheme/include/_header.html.twig' with {
+    'title': 'Page',
+    'lead': 'Sample page'}
+  %}
+{% endblock %}
+
+{% block content %}
+  <img class="img-responsive" src="bundles/symsitetheme/img/placeholder/900x300.gif" alt="placeholder">
+
+  <h1>Header1</h1>
+  <h2>Header2</h2>
+  <h3>Header3</h3>
+
+  <ul>
+    <li>List1</li>
+    <li>List2</li>
+    <li>List3</li>
+  </ul>
+{% endblock %}

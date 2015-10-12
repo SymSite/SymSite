@@ -1,0 +1,18 @@
+symsite_mail_form:
+    resource: "@SymsiteMailFormBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+symsite_upload_file:
+    resource: "@SymsiteUploadFileBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+symsite_blog:
+    resource: "@SymsiteBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

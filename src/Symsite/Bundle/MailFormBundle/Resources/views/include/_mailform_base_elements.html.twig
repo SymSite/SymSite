@@ -1,0 +1,31 @@
+<input type="hidden" name="_token" value="{{ csrf_token('mailform') }}"/>
+<input type="hidden" name="_mailform_subject" value="{{ mailform_subject }}"/>
+<div class="form-group">
+    <label for="mailformName">{{ 'contact.name'|trans }}</label>
+    <input type="text" name="name" class="form-control" id="mainformName" required="">
+</div>
+<div class="form-group">
+    <label for="mainformEmail">{{ 'contact.email'|trans }}</label>
+    <input type="email" name="email" class="form-control" id="mailformEmail" required="">
+</div>
+<div class="form-group">
+    <label for="mailformConfirmEmail">{{ 'contact.confirm_email'|trans }}</label>
+    <input type="email" name="_confirm_email" class="form-control" id="mailformConfirmEmail" required="">
+</div>
+
+<script>
+    var email = document.getElementById("mailformEmail");
+    var confirm_email = document.getElementById("mailformConfirmEmail");
+
+    function emailRepeatCheck() {
+        console.log(email.value + " : " + confirm_email.value);
+        if (email.value != confirm_email.value) {
+            email.setCustomValidity("{% trans from 'validators' %}The Email fields must match.{% endtrans %}");
+        } else {
+            email.setCustomValidity("");
+        }
+    }
+
+    email.addEventListener("change", emailRepeatCheck, false);
+    confirm_email.addEventListener("change", emailRepeatCheck, false);
+</script>

@@ -1,0 +1,16 @@
+# Title, Label
+New: 新規
+Add: 追加
+Edit: 編集
+Update: 更新
+Delete: 削除
+Menu: メニュー
+Blog: ブログ
+File: ファイル
+
+# Message
+Are you sure to delete?: 本当に削除しますか？
+%entity% does not exist.: %entity%は在りません。
+The %entity% has been saved.: %entity%を保存しました。
+%count% %entity% has been deleted.: %count%件の%entity%を削除しました。
+The %entity% could not be deleted.: %entity%を削除できませんでした。

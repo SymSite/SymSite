@@ -1,0 +1,12 @@
+<script>
+    $(function(){
+        $("input, textarea, select").change(function() {
+            $(window).on('beforeunload', function() {
+                return '{{ message }}';
+            });
+        });
+        $("input[type=submit], button[type=submit]").click(function() {
+            $(window).off('beforeunload');
+        });
+    });
+</script>

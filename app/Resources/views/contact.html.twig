@@ -1,0 +1,38 @@
+{% extends '@SymsiteTheme/layout/base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+{% block body_id %}contact{% endblock %}
+
+{% block header %}
+    {% include '@SymsiteTheme/include/_header.html.twig' with {
+        'title': 'Contact',
+    } %}
+{% endblock %}
+
+{% block content %}
+    <form id="contactForm" action="/mailform/send" method="POST">
+        {% include '@SymsiteMailForm/include/_mailform_base_elements.html.twig' with {
+            'form_id': 'contactForm',
+            'mailform_subject': '[SymSite] Contact',
+        } %}
+
+        <div class="form-group">
+            <label for="subject">{{ 'contact.subject'|trans }}</label>
+            <input type="text" name="subject" class="form-control" id="subject" required="">
+        </div>
+        <div class="form-group">
+            <label for="body">{{ 'contact.body'|trans }}</label>
+            <textarea class="form-control" name="body" id="body" rows="8" required=""></textarea>
+        </div>
+        <button type="submit"
+                class="btn btn-primary btn-block"
+                data-disable-with="{{ 'Processing...'|trans }}">
+            {{ 'Submit'|trans }}
+        </button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    {% include '@SymsiteAdmin/include/_confirm_move.html.twig' with {'message': 'Your message has not been sent yet.'|trans}%}
+{% endblock %}

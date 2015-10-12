@@ -1,0 +1,14 @@
+# Title, Label
+Submit: Submit
+
+# Form label
+contact:
+  name: Name
+  subject: Subject
+  email: Email
+  confirm_email: Confirm email
+  body: Body
+
+# Message
+Processing...: Processing...
+Your message has not been sent yet.: Your message has not been sent yet.

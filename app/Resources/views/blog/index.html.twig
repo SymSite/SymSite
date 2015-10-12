@@ -1,0 +1,32 @@
+{% extends 'layout/blog.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+{% block body_id %}blog{% endblock %}
+
+{% block content %}
+    {% if entities|length <= 0 %}
+        {{ '%entity% does not exist.'|trans({'%entity%': 'Article'}) }}
+    {% else %}
+        {% for entity in entities %}
+            <article>
+                <h2>
+                    <a href="{{ path('blog_show', {id: entity.id}) }}">
+                        {{ entity.title }}
+                    </a>
+                </h2>
+                <p>{{ entity.summary|raw }}</p>
+                <div class="blogMeta">
+                    {{ entity.publishedAt|date('Y/m/d') }}
+                </div>
+            </article>
+            <hr/>
+        {% endfor %}
+    {% endif %}
+
+    <div class="text-center">
+        {% include '@SymsiteAdmin/include/_pagination.html.twig' with {
+          'pagination_data': entities.getPaginationData(),
+          'path': 'blog'
+        } %}
+    </div>
+{% endblock %}

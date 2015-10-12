@@ -1,0 +1,36 @@
+# Title, Label
+Blog: Blog
+Article: Article
+Category: Category
+Tag: Tag
+Tags: Tags
+Add New %entity%: Add New %entity%
+New Article: New Article
+Edit Article: Edit Article
+Upload: Upload
+
+# Article status
+Published: Published
+Draft: Draft
+Pending: Pending
+Trash: Trash
+
+# Message
+Your article has not been saved yet.: Your article has not been saved yet.
+The file has been uploaded.: The file has been uploaded.
+The file could not be uploaded.: The file could not be uploaded.
+
+# From Lavel, Table header
+article:
+  title: Title
+  body: Body
+  category: Category
+  tag: Tag
+  status: Status
+  publishedAt: Published
+
+category:
+  name: Name
+
+tag:
+  name: Name

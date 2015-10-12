@@ -1,0 +1,14 @@
+# Title, Label
+Submit: 送信
+
+# Form label
+contact:
+  name: お名前
+  email: メールアドレス
+  confirm_email: メールアドレス（確認用）
+  subject: 件名
+  body: 本文
+
+# Message
+Processing...: 処理中...
+Your message has not been sent yet.: メッセージはまだ送信されていません。

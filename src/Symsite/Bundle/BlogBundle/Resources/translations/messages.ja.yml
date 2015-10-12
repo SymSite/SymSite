@@ -1,0 +1,36 @@
+# Title, Label
+Blog: ブログ
+Article: 記事
+Category: カテゴリー
+Tag: タグ
+Tags: タグ
+Add New %entity%: 新規%entity%を追加
+New Article: 新規記事
+Edit Article: 記事の編集
+Upload: アップロード
+
+# Article status
+Published: 公開
+Draft: 下書き
+Pending: 保留
+Trash: ごみ箱
+
+# Message
+Your article has not been saved yet.: 記事はまだ保存されていません。
+The file has been uploaded.: ファイルはアップロードされました。
+The file could not be uploaded.: ファイルをアップロードできませんでした。
+
+# From Lavel, Table header
+article:
+  title: タイトル
+  body: 本文
+  category: カテゴリー
+  tag: タグ
+  status: 状態
+  publishedAt: 公開日
+
+category:
+  name: 名前
+
+tag:
+  name: 名前

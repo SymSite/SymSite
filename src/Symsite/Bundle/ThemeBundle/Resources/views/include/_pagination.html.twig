@@ -1,0 +1,20 @@
+<div class="btn-group" role="group" aria-label="...">
+    {% if pagination_data.current <= 1 %}
+        <span class="btn btn-default" disabled>«</span>
+        <span class="btn btn-default" disabled>‹</span>
+    {% else %}
+        <a href="{{ path(path_name) }}" class="btn btn-default">«</a>
+        <a href="{{ path(path_name, {page: pagination_data.current - 1}) }}" class="btn btn-default">‹</a>
+    {% endif %}
+    <button class="btn btn-default paginatorCounter" disabled>
+        {{ pagination_data.current }} / {{ pagination_data.last }}
+    </button>
+    {% if (pagination_data.last - pagination_data.current) > 0 %}
+        <a href="{{ path(path_name, {page: pagination_data.current + 1}) }}" class="btn btn-default">›</a>
+        <a href="{{ path(path_name, {page: pagination_data.last}) }}" class="btn btn-default">»</a>
+    {% else %}
+        <span class="btn btn-default" disabled>›</span>
+        <span class="btn btn-default" disabled>»</span>
+    {% endif %}
+</div>
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>
+        {% set title_block = block('title') %}
+        {% if title_block %}
+            {{ title_block|raw }} | {{ site_name|default('SymSite') }}
+        {% else %}
+            {{ site_name|default('SymSite') }}
+        {% endif %}
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    {% block meta %}{% endblock %}
+
+    {% block css %}
+        {% stylesheets
+          'bundles/symsiteadmin/bower_components/bootstrap/dist/css/bootstrap.min.css'
+          'bundles/symsitetheme/css/theme.css'
+          filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+
+<body id="{% block body_id %}{% endblock %}">
+{% block navbar %}
+    {% include '@SymsiteTheme/include/_navbar.html.twig' %}
+{% endblock %}
+
+{% block header %}{% endblock %}
+
+<div class="wrapper">
+    <div class="container">
+        {% include '@SymsiteTheme/include/_flash.html.twig' %}
+
+        {% block grid %}
+            {% block content %}
+                Display content here.
+            {% endblock %}
+        {% endblock %}
+    </div>
+</div>
+
+{% block bottom %}{% endblock %}
+
+{% block footer %}
+    {% include '@SymsiteTheme/include/_footer.html.twig' %}
+{% endblock %}
+
+{% block script %}
+    {% javascripts
+      'bundles/symsiteadmin/bower_components/jquery/dist/jquery.min.js'
+      'bundles/symsiteadmin/bower_components/bootstrap/dist/js/bootstrap.min.js'
+      'bundles/symsitetheme/js/theme.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
+</html>

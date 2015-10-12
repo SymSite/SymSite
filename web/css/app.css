@@ -1,0 +1,30 @@
+/* #home */
+#home header {
+    text-align: center;
+    padding: 80px;
+}
+
+#home header h1 {
+    font-size: 40px;
+}
+
+#home header .lead {
+    margin-bottom: 20px;
+}
+
+#home .feature {
+    text-align: center;
+}
+
+#home .feature .glyphicon {
+    margin: 20px 0;
+    font-size: 64px;
+}
+
+#home .feature h2 {
+    margin-bottom: 20px;
+}
+
+#home .feature p {
+    margin-bottom: 40px;
+}

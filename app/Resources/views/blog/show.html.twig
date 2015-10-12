@@ -1,0 +1,15 @@
+{% extends 'layout/blog.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+{% block body_id %}blog_show{% endblock %}
+
+{% block content %}
+    <article>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.body|raw }}</p>
+        <div class="blogMeta">
+            {{ article.publishedAt|date('Y/m/d') }}
+        </div>
+    </article>
+{% endblock %}
+

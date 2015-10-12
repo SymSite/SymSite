@@ -1,0 +1,64 @@
+{% extends "@SymsiteBlog/layout/articles.html.twig" %}
+
+{% block title %}Tags{% endblock %}
+{% block body_id %}tags{% endblock %}
+
+{% block content %}
+    <h1>{{ 'Tag'|trans  }}</h1>
+    <br/>
+    {% if entities|length <= 0 %}
+        {{ '%entity% does not exist.'|trans({'%entity%': 'Tag'}) }}
+    {% else %}
+        <form id="deleteForm" action="{{ path('tags_delete') }}" method="post">
+            <input type="hidden" name="_method" value="DELETE"/>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>{{ 'tag.name'|trans }}</th>
+                    <th class="text-center deleteColumn">
+                        <label><input type="checkbox" id="checkAllDelete"></label>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>
+                            {{ entity['tag'].name }}
+                            <span class="badge pull-right">
+                                {{ entity['count_article'] }}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <label><input form="deleteForm" class="checkDelete" type="checkbox" name="delete_items[]"
+                                          value="{{ entity['tag'].id }}"></label>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div><!-- .table-responsive -->
+
+        {% include '@SymsiteAdmin/include/_index_nav.html.twig' with {
+            'pagination': entities,
+            'path': 'tags',
+            'delete_form_id': 'deleteForm',
+        } %}
+
+    {% endif %}
+
+    <hr/>
+
+    <div class="spacer20">
+        <h4>{{ 'Add New %entity%'|trans({'%entity%': 'Tag'|trans}) }}</h4>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit"
+                    class="btn btn-primary btn-block"
+                    data-disable-with="{{ 'Processing...'|trans }}">{{ 'Add'|trans }}</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "@SymsiteBlog/layout/articles.html.twig" %}
+
+{% block title %}Article{% endblock %}
+{% block body_id %}articles{% endblock %}
+
+{% block content %}
+    <h1>{{ 'Article'|trans  }}</h1>
+    <br/>
+
+    <form id="deleteForm" action="{{ path('articles_delete') }}" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+    </form>
+
+    {% include '@SymsiteAdmin/include/_index_nav.html.twig' with {
+      'pagination': entities,
+      'path': 'articles',
+      'new_path': path('articles_new'),
+      'delete_form_id': 'deleteForm',
+    } %}
+
+    {% if entities|length <= 0 %}
+        <div class="spacer30">
+            {{ '%entity% does not exist.'|trans({'%entity%': 'Article'}) }}
+        </div>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>{{'article.title'|trans}}</th>
+                    <th>{{'article.category'|trans}}</th>
+                    <th>{{'article.status'|trans}}</th>
+                    <th>{{'article.publishedAt'|trans}}</th>
+                    <th class="text-center deleteColumn">
+                        <label><input type="checkbox" id="checkAllDelete"></label>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('articles_edit', {id: entity.id}) }}">{{ entity.title }}</a>
+                        </td>
+                        <td>{{ entity.category.name is defined ? entity.category.name : '' }}</td>
+                        <td>{{ entity.status|trans }}</td>
+                        <td>{{ entity.publishedAt|date("Y/m/d H:i") }}</td>
+                        <td class="text-center">
+                            <label><input form="deleteForm" class="checkDelete" type="checkbox" name="delete_items[]" value="{{ entity.id }}"></label>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div><!-- .table-responsive -->
+
+        {% include '@SymsiteAdmin/include/_index_nav.html.twig' with {
+            'pagination': entities,
+            'path': 'articles',
+            'new_path': path('articles_new'),
+            'delete_form_id': 'deleteForm',
+        } %}
+    {% endif %}
+{% endblock %}
+

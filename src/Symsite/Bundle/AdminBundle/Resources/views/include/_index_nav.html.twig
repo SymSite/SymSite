@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-sm-2 text-left">
+        {% if new_path is defined %}
+            <a href="{{ new_path }}" class="btn btn-primary">{{ 'New'|trans }}</a>
+        {% endif %}
+    </div>
+    <div class="col-sm-8 text-center">
+        {% include '@SymsiteAdmin/include/_pagination.html.twig' with {
+            'pagination_data': pagination.getPaginationData(),
+            'path': path
+        } %}
+    </div>
+    <div class="col-sm-2 text-right">
+        <button type="submit"
+                form="{{ delete_form_id }}"
+                data-confirm="{{ 'Are you sure to delete?'|trans }}"
+                data-disable-with="{{ 'Processing...'|trans }}"
+                class="btn btn-danger deleteButton" disabled>
+            {{ 'Delete'|trans }}
+        </button>
+    </div>
+</div>

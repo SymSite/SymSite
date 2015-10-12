@@ -1,0 +1,39 @@
+{% extends '@SymsiteTheme/layout/base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+{% block body_id %}home{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}"/>
+{% endblock %}
+
+{% block header %}
+    <header>
+        <h1>{{ site_name|default('SymSite CMS') }}</h1>
+        <p class="lead">Simple CMS on Symfony framework.<br/>You can make web site easily.</p>
+        <a class="btn btn-info btn-lg" href="https://github.com/SymSite/SymSite">Document</a>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <div class="feature">
+        <div class="row">
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <h2>Symfony Framework</h2>
+                <p>Extensible in the Symfony Way.</p>
+            </div>
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-indent-left"></span>
+                <h2>Bootstrap CSS</h2>
+                <p>Flexible design in the Bootstrap Way.</p>
+            </div>
+            <div class="col-sm-4">
+                <span class="glyphicon glyphicon-cog"></span>
+                <h2>Simple Admin</h2>
+                <p>Manage blog and files.</p>
+            </div>
+        </div><!-- /row -->
+    </div><!-- /featurette -->
+{% endblock %}

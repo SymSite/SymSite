@@ -1,0 +1,86 @@
+{% extends '@SymsiteAdmin/layout/base.html.twig' %}
+
+{% block title %}Upload File{% endblock %}
+{% block body_id %}uploadFileIndex{% endblock %}
+
+{% block content %}
+    <h1>{{ 'File'|trans }}</h1>
+    <br/>
+    <form id="deleteForm" action="{{ path('upload_files_delete') }}" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+    </form>
+    <form id="myDropzone" class="dropzone" action="{{ path('upload_files_api_upload') }}">
+        {{ form_widget(form._token) }}
+    </form>
+    {#{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
+        {#{{ form_widget(form) }}#}
+        {#<button type="submit"#}
+                {#class="btn btn-primary"#}
+                {#data-disable-with="{{ 'Processing...'|trans }}">{{ 'Upload'|trans }}</button>#}
+    {#{{ form_end(form) }}#}
+
+    {% if entities|length <= 0 %}
+        <div class="spacer30">
+            {{ '%entity% does not exist.'|trans({'%entity%': 'Media File'}) }}
+        </div>
+    {% else %}
+        <div class="row spacer30">
+            {% set cnt = 1 %}
+            {% for entity in entities %}
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <a href="{{ entity.webpath }}" class="thumbnail">
+                        {% if entity.extension == 'pdf' %}
+                            <img src="{{ asset('bundles/symsiteuploadfile/img/pdf.png') }}" alt="{{ entity.filename }}"/>
+                        {% else %}
+                            <img src="{{ entity.webpath }}" alt="{{ entity.filename }}"/>
+                        {% endif %}
+                    </a>
+                    <div class="caption text-center">
+                        <label>
+                            <input type="checkbox" form="deleteForm" name="delete_items[]" value="{{ entity.id }}" class="checkDelete" />
+                            <span class="fileName">{{ entity.filename }}</span><br/>
+                            <div class="fileMeta">{{ entity.size|readable_filesize(0) }}</div>
+                        </label>
+                        <br/>
+                    </div>
+                </div>
+                {% if (cnt % 2) == 0 %}
+                    <div class="clearfix visible-xs-block"></div>
+                {% endif %}
+                {% if (cnt % 3) == 0 %}
+                    <div class="clearfix visible-sm-block"></div>
+                {% endif %}
+                {% if (cnt % 4) == 0 %}
+                    <div class="clearfix visible-md-block visible-lg-block"></div>
+                {% endif %}
+                {% set cnt = cnt + 1 %}
+            {% endfor %}
+        </div>
+
+        {% include '@SymsiteAdmin/include/_index_nav.html.twig' with {
+            'pagination': entities,
+            'path': 'upload_files',
+            'delete_form_id': 'deleteForm',
+        } %}
+    {% endif %}
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/bundles/symsiteadmin/bower_components/dropzone/dist/min/dropzone.min.css"/>
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script src="/bundles/symsiteadmin/bower_components/dropzone/dist/min/dropzone.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            Dropzone.options.myDropzone = {
+                paramName: "upload_file[file]",
+                maxFilesize: 1.024,
+                acceptedFiles: "image/jpeg,image/png,image/gif,application/pdf",
+                dictDefaultMessage: "Drop files here or click to upload."
+            };
+        });
+    </script>
+{% endblock %}
