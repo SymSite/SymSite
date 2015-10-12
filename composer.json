@@ -1,14 +1,20 @@
 {
-    "name": "tsubo/symsite",
-    "license": "proprietary",
+    "name": "symsite/symsite",
+    "description": "Simple CMS on Symfony framework.",
+    "license": "MIT",
     "type": "project",
+    "keywords": ["cms", "symfony"],
+    "authors": [{
+      "name": "Kodo Tsubota",
+      "email": "ktsubota@gmail.com"
+    }],
     "autoload": {
         "psr-4": {
             "": "src/"
         }
     },
     "require": {
-        "php": ">=5.3.9",
+        "php": ">=5.5.0",
         "symfony/symfony": "2.7.*",
         "doctrine/orm": "^2.4.8",
         "doctrine/doctrine-bundle": "~1.4",
