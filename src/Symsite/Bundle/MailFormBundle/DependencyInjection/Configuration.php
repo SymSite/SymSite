@@ -27,7 +27,6 @@ class Configuration implements ConfigurationInterface
           ->children()
             ->scalarNode('delivery_to')
                 ->isRequired()
-                ->cannotBeEmpty()
             ->end()
           ->end()
         ;
