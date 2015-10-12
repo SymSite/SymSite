@@ -37,11 +37,11 @@ parameters:
     # Mail
     mailer_transport: smtp
     mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_user: YOURE_MAIL_USER_ID
+    mailer_password: YOURE_MAIL_USER_PASSWORD
 
     # Mail Form
-    mailform_delivery_to: null
+    mailform_delivery_to: YOURE_MAIL_ADDRESS
 
     # Symfony2 Secret Generator -> http://nux.net/secret
     secret: ThisTokenIsNotSoSecretChangeIt
